@@ -17,6 +17,7 @@ let getHumanChoice = function()
 let humanScore = 0 , computerScore = 0;
 let playRound = function( humanChoice , computerChoice)
 {
+    if(humanScore !== 5 && computerScore !== 5) { 
    if(humanChoice === computerChoice) resault.textContent = `Tie! Computer score ${computerScore} | human ${humanScore}`;
    else switch (humanChoice) {  
    case "paper" : 
@@ -42,10 +43,10 @@ let playRound = function( humanChoice , computerChoice)
         humanScore++;
         resault.textContent =`You win! ${humanChoice} beats ${computerChoice}. Human: ${humanScore} | Computer: ${computerScore}`;
     }break;
-    default : return null;  }
+    default : return null;  } } 
     if( humanScore == 5 || computerScore == 5 ) {
-         if(humanScore > computerScore)  resault.textContent = "You win !";
-         else  resault.textContent = "PC one (definitly a skill issue)";
+         if(humanScore > computerScore)  { resault.textContent = "You win !"; return; }
+         else  {resault.textContent = "PC one (definitly a skill issue)"; return;}
 }
 }
 const btn = document.querySelector("#rock");
